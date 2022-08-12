@@ -1,19 +1,20 @@
 import { createRouter, createWebHistory } from "vue-router";
-import AppEmailBody from "./components/AppEmailBody";
-import DashboardPage from "./views/DashboardPage";
-import ForgetPage from "./views/ForgetPage";
 import LoginPage from "./views/LoginPage";
-import MailPage from "./views/MailPage";
-import NotFound from "./views/NotFound";
+const MailPage = () => import("./views/MailPage");
+const NotFound = () => import("./views/NotFound");
+const ForgetPage = () => import("./views/ForgetPage");
+const DashboardPage = () => import("./views/DashboardPage");
+const AppEmailBody = () => import("./components/AppEmailBody");
 
-export default createRouter({
+const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: "/login", component: LoginPage, alias: "/" },
-    { path: "/dashboard", component: DashboardPage },
+    { path: "/dashboard", component: DashboardPage, meta: { cantEnter: true } },
     {
       path: "/mail",
       component: MailPage,
+      meta: { cantEnter: true },
       children: [{ path: ":mailId?", component: AppEmailBody, props: true }],
     },
     { path: "/forget", component: ForgetPage },
@@ -22,3 +23,14 @@ export default createRouter({
   linkActiveClass: "active",
   linkExactActiveClass: "active",
 });
+
+// router.beforeEach((to, from, next) => {
+//   if (to.meta.cantEnter) {
+//     next(false);
+//     return;
+//   }
+//   next();
+// });
+// router.afterEach((to, from, next) => {});
+
+export default router;
