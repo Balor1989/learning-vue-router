@@ -34,10 +34,11 @@ export default {
       return this.email !== "" && this.password !== "";
     },
   },
+  inject: ["login"],
   methods: {
     submit() {
       if (this.isValid) {
-        // login
+        this.login();
       }
     },
   },

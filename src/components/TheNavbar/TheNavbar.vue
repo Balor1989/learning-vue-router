@@ -6,18 +6,19 @@
       <li>
         <a custom to="/mail">Почта</a>
       </li>
-      <li><a href="#">Выйти</a></li>
+      <li><router-link to="/login" @click="logout">Выйти</router-link></li>
     </ul>
   </header>
 </template>
 
 <script>
 export default {
+  inject: ["logout"],
   props: {
     visible: {
       type: Boolean,
-      default: false
-    }
-  }
-}
+      default: false,
+    },
+  },
+};
 </script>
