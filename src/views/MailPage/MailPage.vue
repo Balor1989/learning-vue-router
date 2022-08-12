@@ -10,16 +10,13 @@
       </ul>
     </div>
     <div class="card-body">
-      <app-email-body :mailId="this.$route.params.mailId"></app-email-body>
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
-import AppEmailBody from "../../components/AppEmailBody/AppEmailBody.vue";
-
 export default {
-  components: { AppEmailBody },
   inject: ["emails"],
 };
 </script>

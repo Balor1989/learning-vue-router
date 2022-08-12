@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import AppEmailBody from "./components/AppEmailBody";
 import DashboardPage from "./views/DashboardPage";
 import ForgetPage from "./views/ForgetPage";
 import LoginPage from "./views/LoginPage";
@@ -9,7 +10,11 @@ export default createRouter({
   routes: [
     { path: "/login", component: LoginPage, alias: "/" },
     { path: "/dashboard", component: DashboardPage },
-    { path: "/mail/:mailId?", component: MailPage },
+    {
+      path: "/mail",
+      component: MailPage,
+      children: [{ path: ":mailId?", component: AppEmailBody, props: true }],
+    },
     { path: "/forget", component: ForgetPage },
   ],
   linkActiveClass: "active",
