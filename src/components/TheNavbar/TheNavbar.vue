@@ -12,7 +12,7 @@
           ><a
             href="#"
             @click="navigate"
-            :class="{ active: $route.path.indexOf(href !== -1) }"
+            :class="{ active: $route.path.indexOf(href) !== -1 }"
             >Почта</a
           ></router-link
         >

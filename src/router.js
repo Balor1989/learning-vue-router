@@ -4,6 +4,7 @@ import DashboardPage from "./views/DashboardPage";
 import ForgetPage from "./views/ForgetPage";
 import LoginPage from "./views/LoginPage";
 import MailPage from "./views/MailPage";
+import NotFound from "./views/NotFound";
 
 export default createRouter({
   history: createWebHistory(),
@@ -16,6 +17,7 @@ export default createRouter({
       children: [{ path: ":mailId?", component: AppEmailBody, props: true }],
     },
     { path: "/forget", component: ForgetPage },
+    { path: "/:notFound(.*)", component: NotFound },
   ],
   linkActiveClass: "active",
   linkExactActiveClass: "active",
